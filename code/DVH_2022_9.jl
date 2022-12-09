@@ -15,6 +15,44 @@ This assumes that H and T and not in the neighbourhood.
 In fact, if the coordinates are computed ok, than:
 1) Δ is matched and T is updated
 2) Δ is not matched, ergo H and T are in the same neighbourhood and the old T is returned.
+
+For a visual cue on how head and tail are moving, see these nice arrow formations.
+
+This is our (relative grid): T is at the center, and the head is in one of the .-positions
+. . .
+. T .
+. . .
+
+Head can move like:
+
+1) this is trivial, just go horizontal or vertical
+    ↑   
+  . . . 
+← . T . →
+  . . . 
+    ↓   
+
+2) now with dashing diagonal lines.
+Note that a lot of these moves only appear when you have multiple knots.
+↖ ↑   ↑ ↗
+← . . . →
+  . T .
+← . . . →
+↙ ↓   ↓ ↘
+
+   ↖ ↗
+  . . . ↗
+↖ . T .
+↙ . . . ↘
+   ↙ ↘
+
+For clarity: there are five possible moves at three end locations of H, for which T needs to move up and left
+↖ ↑↖ 
+← . . . 
+↖ . T .
+  . . . 
+Express these locations of H as a difference in a CartesianIndex, and move T accordingly
+(repeat for other corners)
 """
 function move_tail_2_head(H::CartesianIndex, T::CartesianIndex)::CartesianIndex
     # define H and T
