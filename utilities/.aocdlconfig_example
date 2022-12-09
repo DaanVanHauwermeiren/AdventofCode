@@ -1,0 +1,4 @@
+{
+	"session-cookie": "0123456789...abcdef",
+	"output": "input-{{.Year}}-{{.Day}}.txt"
+}
