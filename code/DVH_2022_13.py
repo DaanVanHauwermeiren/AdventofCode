@@ -36,6 +36,12 @@ def main() -> tuple[int, int]:
             # left is larger than right: all good
             # left equal to right, continue comparing
             # else, right is larger: not ok!
+            # NOTE: the case that left and right return 0, this will never propagate
+            # the final return value. This is because, int-int comparisons are called in
+            # comparison lists, or the length of lists
+            # In the former, a 0 means keep looking, it will ignore that,
+            # In case of the length of lists, an error would have been detected when
+            # comparing element wise, so doing nothing is the correct behaviour
             case int(), int():
                 if left < right:
                     return 1
