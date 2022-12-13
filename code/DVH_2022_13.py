@@ -131,7 +131,7 @@ def main() -> tuple[int, int]:
     # not 100% sure about all the internal workings of cmp_to_key, but this seems to work
     # Also, there has to be a nicer way to unpack a list of lists, maybe abusing sum?
     # because [x for l in signalpairs for x in l] is horrible
-    sortedsignalpairs = sorted([x for l in signalpairs for x in l] + [[2], [6]], key=cmp_to_key(compare))[::-1]
+    sortedsignalpairs = sorted([x for l in signalpairs for x in l] + [[2], [6]], key=cmp_to_key(compare), reverse=True)
     # +1 because of zero based indexing
     solution_2 = (sortedsignalpairs.index([6]) + 1) * (sortedsignalpairs.index([2]) + 1)
 
@@ -149,7 +149,7 @@ def main() -> tuple[int, int]:
     with open(fn, mode="r") as f:
         raw = f.read().rstrip().split()
     signalpairs = [eval(ii) for ii in raw] + [[2], [6]]
-    sortedsignalpairs = sorted(signalpairs, key=cmp_to_key(compare))[::-1]
+    sortedsignalpairs = sorted(signalpairs, key=cmp_to_key(compare), reverse=True)
     solution_2 = (sortedsignalpairs.index([6]) + 1) * (sortedsignalpairs.index([2]) + 1)
 
     return solution_1, solution_2
