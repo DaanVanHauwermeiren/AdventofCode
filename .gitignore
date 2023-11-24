@@ -190,3 +190,7 @@ cookies.txt
 
 # ignore aocdl binary
 utilities/aocdl
+
+# figs
+*.png
+*.jpg
