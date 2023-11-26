@@ -2,8 +2,9 @@
 author: Daan Van Hauwermeiren
 AoC 2022 day 8
 =#
+
 using Pkg
-Pkg.activate(".")
+Pkg.activate(".", io=devnull)
 using Pipe
 
 # this is wrong because it ignores larger trees after repeated smaller trees

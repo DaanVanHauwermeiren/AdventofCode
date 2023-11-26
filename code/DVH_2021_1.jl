@@ -3,7 +3,7 @@ author: Daan Van Hauwermeiren
 AoC: 2021 day 1
 =#
 using Pkg
-Pkg.activate(".")
+Pkg.activate(".", io=devnull)
 using DelimitedFiles
 
 function main(args)

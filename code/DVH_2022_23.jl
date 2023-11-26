@@ -2,8 +2,9 @@
 author: Daan Van Hauwermeiren
 AoC 2022 day 23
 =#
+
 using Pkg
-Pkg.activate(".")
+Pkg.activate(".", io=devnull)
 using Pipe
 
 # run via 

@@ -3,14 +3,13 @@ author: Daan Van Hauwermeiren
 AoC 2022 day 1
 =#
 using Pkg
-Pkg.activate(".")
+Pkg.activate(".", io=devnull)
 using Pipe
 
 # run via 
 # julia ./code/DVH_2022_1.jl ./data/input_2022_1.txt
 
 function main(args)
-    @show args
     fn = args[1]
     
     raw = read(fn, String);
