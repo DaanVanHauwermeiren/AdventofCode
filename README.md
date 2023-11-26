@@ -23,7 +23,10 @@ Join our [Private leaderboard](https://adventofcode.com/2021/leaderboard/private
 
 
 
-## Rules of the repo
+## Contributing
 
-1. Check [CONTRIBUTING.md](CONTRIBUTING.md) on how to contribute to this repo.
-2. Have fun 🥳️ ! 
+- You can contribute code for any programming language you want, however at the moment, the solution checker only works for `Python` and `Julia`. 
+- Put your code as `INITIALS_YYYY_D.EXTENSIONS` in the folder `code`. 
+- Branch off and make a pull request to add code. The maintainers will likely group the pull requests per week to have weekly updates of the main branch. 
+- If you need specific libs, do not forget to add them to either `requirements.txt` or the `Project.toml`
+- The code assumes `Python` version `3.1.10`, and `Julia` version `1.9.3`. Since this is a code golf repo, normally any recent release should be fine.
