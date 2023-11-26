@@ -6,13 +6,14 @@ python3.10 -m venv .venv
 .venv/bin/pip install -r requirements.txt
 
 # Download the Advent of Code puzzle input download command line utility:
-# https://github.com/GreenLightning/advent-of-code-downloader/releases/tag/v1.0.1
+# https://github.com/GreenLightning/advent-of-code-downloader/releases/tag/v1.0.2
 # I have put this executable in this folder
 # check the information about the session cookie:
 # https://github.com/GreenLightning/advent-of-code-downloader#setting-the-session-cookie
 # and add this to .aocdlconfig
 # this download the puzzle from day 1 in 2021 and stores it in the file input_2021_1.txt
 # ./aocdl -year 2021 -day 1
+# NOTE: run from the `utilities` folder.
 
 # or in case you do not want to download an external library, use wget
 # for help on downloading and formatting cookies see
@@ -26,7 +27,7 @@ python3.10 -m venv .venv
 # echo $2
 # echo "derp"
 
-FILENAME="./data/input_2021_1.txt"
+FILENAME="./data/input_2021_2.txt"
 
 if [ -e $FILENAME ]
 then
