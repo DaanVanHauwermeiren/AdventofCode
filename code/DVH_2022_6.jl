@@ -42,7 +42,7 @@ end
 =#
 
 function main(args)
-    @show args
+    # @show args
     fn = args[1]
     
     datastream = read(fn, String) |> rstrip

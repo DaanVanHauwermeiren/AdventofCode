@@ -12,7 +12,7 @@ using Pipe
 
 # this is an example on how to get command line arguments into the file
 function main(args)
-    @show args
+    # @show args
     fn = args[1]    
     raw = read(fn, String);
     
