@@ -81,12 +81,12 @@ do
         # Measure execution time and capture the result
         EXECTIME=$({ TIMEFORMAT=%E; time $PYTHON_EXEC "$SCRIPT_FN" "$DATAFILE" > /dev/null; } 2>&1)
     elif [ "$EXTENSION" = "jl" ]; then
+        LANGUAGE="julia"
         # Check if an entry with the same first 4 columns exists in the log file
         if entry_exists "$USER" "$YEAR" "$DAY" "$LANGUAGE"; then
             echo "Skipping execution for $USER, $YEAR, $DAY, $LANGUAGE as it already exists in the log."
             continue  # Skip the current iteration and move to the next script
         fi
-        LANGUAGE="julia"
         # Run the Julia command and capture its output
         RESULT=$(julia "$SCRIPT_FN" "$DATAFILE")
         # Splitting the tuple into two integers
