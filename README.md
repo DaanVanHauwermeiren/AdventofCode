@@ -16,7 +16,7 @@ This is the code repository for the greatest code event of the year: the [Advent
 Join our [Private leaderboard](https://adventofcode.com/2021/leaderboard/private) !
 (join with code: `1059646-48d5074b`)
 
-[Join the chat](https://matrix.to/#/!rtNPlShenjZyTNApmv:gitter.im?via=gitter.im)
+[Join the chat](https://matrix.to/#/#AoC-BW-UGent:gitter.im) 
 (If you have never used gitter: you can click on `Element` and select `use in browser`. You can sign up with your `github.com` account.)
 
 
