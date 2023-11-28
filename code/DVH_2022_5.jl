@@ -2,8 +2,9 @@
 author: Daan Van Hauwermeiren
 AoC 2022 day 5
 =#
+
 using Pkg
-Pkg.activate(".")
+Pkg.activate(".", io=devnull)
 using Pipe
 
 # run via 
@@ -53,7 +54,7 @@ end
 
 # this is an example on how to get command line arguments into the file
 function main(args)
-    @show args
+    # @show args
     fn = args[1]
     
     raw = read(fn, String) |> rstrip;

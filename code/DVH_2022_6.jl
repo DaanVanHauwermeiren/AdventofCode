@@ -2,8 +2,9 @@
 author: Daan Van Hauwermeiren
 AoC 2022 day 6
 =#
+
 using Pkg
-Pkg.activate(".")
+Pkg.activate(".", io=devnull)
 using Pipe
 # using Test
 
@@ -41,7 +42,7 @@ end
 =#
 
 function main(args)
-    @show args
+    # @show args
     fn = args[1]
     
     datastream = read(fn, String) |> rstrip
