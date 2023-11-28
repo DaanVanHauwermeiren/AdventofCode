@@ -6,17 +6,20 @@
 # #!.venv/bin/python3
 
 # the python executable in this virtual environment
-PYTHON_EXEC=.venv/bin/python3
+EXECUTABLE_PYTHON=.venv/bin/python3
 
 # NOTE: assuming that julia executable is added to the path
 # export PATH="/path/to/julia/bin/julia_bin/julia-1.9.3/bin/:$PATH"
 # Also assuming julia version 1.9.3
-echo `which julia`
+EXECUTABLE_JULIA=$(which julia)
 
 fns="./code/*"
 echo $fns
 
 LOG_FILE="output.csv"
+
+# Number of times to repeat the execution
+NUM_RUNS=10
 
 # Function to check if an entry already exists in the log file
 entry_exists() {
@@ -53,6 +56,63 @@ check_solution() {
     fi
 }
 
+calculate_average_execution_time() {
+    local EXECUTABLE="$1"
+    local SCRIPT_FN="$2"
+    local DATAFILE="$3"
+    local NUM_RUNS="$4"
+
+    # Initialize a variable to store the total execution time
+    TOTAL_EXECTIME=0
+
+    for ((i = 1; i <= NUM_RUNS; i++)); do
+        # Run the command and capture its execution time
+        EXECTIME=$({ TIMEFORMAT=%E; time "$EXECUTABLE" "$SCRIPT_FN" "$DATAFILE" > /dev/null; } 2>&1)
+
+        # Extract the real (wall clock) time from EXECTIME and add it to the total
+        REAL_TIME=$(echo "$EXECTIME" | awk '{print $1}')
+        TOTAL_EXECTIME=$(echo "$TOTAL_EXECTIME + $REAL_TIME" | bc -l)
+    done
+
+    # Calculate the average execution time with 4 digits after the decimal point
+    AVERAGE_EXECTIME=$(printf "%.4f" "$(echo "$TOTAL_EXECTIME / $NUM_RUNS" | bc -l)")
+
+    # Print the average execution time
+    echo "Average EXECTIME over $NUM_RUNS runs: $AVERAGE_EXECTIME seconds"
+}
+
+# Example usage of the function:
+# calculate_average_execution_time "$EXECUTABLE" "$SCRIPT_FN" "$DATAFILE" "$NUM_RUNS"
+
+
+parse_result() {
+    local extension="$1"
+    local result="$2"
+
+    if [ "$extension" = "py" ]; then
+        # Python parsing logic
+        result=${result#*(}
+        result=${result%)*}
+        result=${result// /}
+    elif [ "$extension" = "jl" ]; then
+        # Julia parsing logic
+        result=${result#*=}
+        result=${result// /}
+        result=${result//(/}
+        result=${result//)/}
+    fi
+
+    echo "$result"
+}
+
+# Example usage:
+# EXTENSION="py" or EXTENSION="jl"
+# RESULT="(123, 456)" (example result)
+# Call the function to parse the result
+# PARSED_RESULT=$(parse_result "$EXTENSION" "$RESULT")
+# Now PARSED_RESULT will contain the parsed result based on the extension
+
+
 for SCRIPT_FN in $fns
 do
     echo $SCRIPT_FN
@@ -68,46 +128,37 @@ do
     EXTENSION="${FILENAME##*.}"
     if [ "$EXTENSION" = "py" ]; then
         LANGUAGE="python"
-        # Check if an entry with the same first 4 columns exists in the log file
-        if entry_exists "$USER" "$YEAR" "$DAY" "$LANGUAGE"; then
-            echo "Skipping execution for $USER, $YEAR, $DAY, $LANGUAGE as it already exists in the log."
-            continue  # Skip the current iteration and move to the next script
-        fi
-        # Run the Python command and capture its output
-        RESULT=$("$PYTHON_EXEC" "$SCRIPT_FN" "$DATAFILE")
-        # Remove leading and trailing parentheses and spaces
-        RESULT=${RESULT#*(}
-        RESULT=${RESULT%)*}
-        RESULT=${RESULT// /}
-        # Measure execution time and capture the result
-        EXECTIME=$({ TIMEFORMAT=%E; time $PYTHON_EXEC "$SCRIPT_FN" "$DATAFILE" > /dev/null; } 2>&1)
+        EXECUTABLE=$EXECUTABLE_PYTHON
     elif [ "$EXTENSION" = "jl" ]; then
         LANGUAGE="julia"
-        # Check if an entry with the same first 4 columns exists in the log file
-        if entry_exists "$USER" "$YEAR" "$DAY" "$LANGUAGE"; then
-            echo "Skipping execution for $USER, $YEAR, $DAY, $LANGUAGE as it already exists in the log."
-            continue  # Skip the current iteration and move to the next script
-        fi
-        # Run the Julia command and capture its output
-        RESULT=$(julia "$SCRIPT_FN" "$DATAFILE")
-        # Splitting the tuple into two integers
-        RESULT=${RESULT#*=}
-        RESULT=${RESULT// /}
-        RESULT=${RESULT//(/}
-        RESULT=${RESULT//)/}
-        # Measure execution time and capture the result
-        EXECTIME=$({ TIMEFORMAT=%E; time julia "$SCRIPT_FN" "$DATAFILE" > /dev/null; } 2>&1)
+        EXECUTABLE=$EXECUTABLE_JULIA
     else
         LANGUAGE="unknown"
         echo "Unknown file extension: $EXTENSION"
     fi
+
+    # Check if an entry with the same first 4 columns exists in the log file
+    if entry_exists "$USER" "$YEAR" "$DAY" "$LANGUAGE"; then
+        echo "Skipping execution for $USER, $YEAR, $DAY, $LANGUAGE as it already exists in the log."
+        continue  # Skip the current iteration and move to the next script
+    fi
+    # Run the Python or julia command and capture its output
+    RESULT=$("$EXECUTABLE" "$SCRIPT_FN" "$DATAFILE")
+
+    PARSED_RESULT=$(parse_result "$EXTENSION" "$RESULT")
+
+    # Measure execution time and capture the result, simple, one 1 time
+    # EXECTIME=$({ TIMEFORMAT=%E; time julia "$SCRIPT_FN" "$DATAFILE" > /dev/null; } 2>&1)
+    # multiple executions
+    calculate_average_execution_time "$EXECUTABLE" "$SCRIPT_FN" "$DATAFILE" "$NUM_RUNS"
+
     # Split the result into RESULT1 and RESULT2 using a comma as the delimiter
-    IFS=',' read -r RESULT1 RESULT2 <<< "$RESULT"
+    IFS=',' read -r RESULT1 RESULT2 <<< "$PARSED_RESULT"
     # Call the function with the appropriate arguments
     check_solution "$YEAR" "$DAY" "$RESULT1" "$RESULT2"
 
     # Store the result in the log file
-    echo "$USER, $YEAR, $DAY, $LANGUAGE, $CORRECT1, $CORRECT2, $EXECTIME" >> "$LOG_FILE"
+    echo "$USER, $YEAR, $DAY, $LANGUAGE, $CORRECT1, $CORRECT2, $AVERAGE_EXECTIME" >> "$LOG_FILE"
 
 done
 

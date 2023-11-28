@@ -37,8 +37,8 @@ Here be some summary statistics.
 <!-- START_PLACEHOLDER_FOR_stats_user.md -->
 | Language | Execution Time (s) |
 |-----------|---------------------|
-| AAA | 0.139000 |
-| DVH | 4.211790 |
+| AAA | 0.141700 |
+| DVH | 4.455070 |
 <!-- END_PLACEHOLDER_FOR_stats_user.md -->
 
 ### Average execution time per year
@@ -46,8 +46,8 @@ Here be some summary statistics.
 <!-- START_PLACEHOLDER_FOR_stats_year.md -->
 | Language | Execution Time (s) |
 |-----------|---------------------|
-| 2021 | 0.426333 |
-| 2022 | 4.640240 |
+| 2021 | 0.397667 |
+| 2022 | 4.917360 |
 <!-- END_PLACEHOLDER_FOR_stats_year.md -->
 
 ### Average execution time per language
@@ -55,8 +55,8 @@ Here be some summary statistics.
 <!-- START_PLACEHOLDER_FOR_stats_language.md -->
 | Language | Execution Time (s) |
 |-----------|---------------------|
-| julia | 6.644250 |
-| python | 0.054000 |
+| julia | 7.029840 |
+| python | 0.053750 |
 <!-- END_PLACEHOLDER_FOR_stats_language.md -->
 
 ### Average execution time per year and day
@@ -64,20 +64,20 @@ Here be some summary statistics.
 <!-- START_PLACEHOLDER_FOR_stats_year_day.md -->
 | Language | Execution Time (s) |
 |-----------|---------------------|
-| 2022-6 | 0.285000 |
+| 2022-6 | 0.302000 |
 | 2022-7 | 0.015000 |
-| 2022-8 | 2.317000 |
-| 2022-9 | 2.929000 |
-| 2021-1 | 0.426333 |
-| 2022-10 | 1.666000 |
-| 2022-20 | 1.143000 |
-| 2022-11 | 1.542000 |
-| 2022-12 | 1.205000 |
-| 2022-13 | 0.057000 |
-| 2022-1 | 0.353500 |
-| 2022-23 | 63.722000 |
+| 2022-8 | 2.526000 |
+| 2022-9 | 2.995000 |
+| 2021-1 | 0.397667 |
+| 2022-10 | 1.655700 |
+| 2022-20 | 1.189000 |
+| 2022-11 | 1.544000 |
+| 2022-12 | 1.215300 |
+| 2022-1 | 0.322350 |
+| 2022-13 | 0.060300 |
 | 2022-2 | 0.013000 |
-| 2022-3 | 0.021000 |
-| 2022-4 | 0.511500 |
-| 2022-5 | 2.239000 |
+| 2022-23 | 67.888700 |
+| 2022-3 | 0.014000 |
+| 2022-4 | 0.562850 |
+| 2022-5 | 2.406700 |
 <!-- END_PLACEHOLDER_FOR_stats_year_day.md -->
