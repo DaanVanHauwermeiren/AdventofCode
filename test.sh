@@ -24,6 +24,7 @@ entry_exists() {
     local year="$2"
     local day="$3"
     local language="$4"
+    echo "checking entry $user, $year, $day, $language"
     grep -q "$user, $year, $day, $language" "$LOG_FILE"
 }
 
@@ -105,15 +106,12 @@ do
     # Call the function with the appropriate arguments
     check_solution "$YEAR" "$DAY" "$RESULT1" "$RESULT2"
 
-    echo $USER
-    echo $YEAR
-    echo $DAY
-    echo $LANGUAGE
-    echo $CORRECT1
-    echo $CORRECT2
-    echo $EXECTIME
-
     # Store the result in the log file
     echo "$USER, $YEAR, $DAY, $LANGUAGE, $CORRECT1, $CORRECT2, $EXECTIME" >> "$LOG_FILE"
 
 done
+
+awk -F', ' '{ sum[$1] += $7; count[$1]++ } END { for (user in sum) print user, sum[user] / count[user] }' "$LOG_FILE" | awk '{ printf "%s,%f\n", $1, $2 }' > stats_user.csv
+awk -F', ' '{ sum[$2] += $7; count[$2]++ } END { for (year in sum) print year, sum[year] / count[year] }' "$LOG_FILE" | awk '{ printf "%s,%f\n", $1, $2 }' > stats_year.csv
+awk -F', ' '{ sum[$2" "$3] += $7; count[$2" "$3]++ } END { for (year_day in sum) print year_day, sum[year_day] / count[year_day] }' "$LOG_FILE"  | awk '{ printf "%s-%s,%f\n", $1, $2, $3 }' > stats_year_day.csv
+awk -F', ' '{ sum[$4] += $7; count[$4]++ } END { for (language in sum) print language, sum[language] / count[language] }' "$LOG_FILE" | awk '{ printf "%s,%f\n", $1, $2 }' > stats_language.csv
