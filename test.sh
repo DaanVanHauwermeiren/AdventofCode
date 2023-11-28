@@ -111,7 +111,33 @@ do
 
 done
 
+# some summary stats
 awk -F', ' '{ sum[$1] += $7; count[$1]++ } END { for (user in sum) print user, sum[user] / count[user] }' "$LOG_FILE" | awk '{ printf "%s,%f\n", $1, $2 }' > stats_user.csv
 awk -F', ' '{ sum[$2] += $7; count[$2]++ } END { for (year in sum) print year, sum[year] / count[year] }' "$LOG_FILE" | awk '{ printf "%s,%f\n", $1, $2 }' > stats_year.csv
 awk -F', ' '{ sum[$2" "$3] += $7; count[$2" "$3]++ } END { for (year_day in sum) print year_day, sum[year_day] / count[year_day] }' "$LOG_FILE"  | awk '{ printf "%s-%s,%f\n", $1, $2, $3 }' > stats_year_day.csv
 awk -F', ' '{ sum[$4] += $7; count[$4]++ } END { for (language in sum) print language, sum[language] / count[language] }' "$LOG_FILE" | awk '{ printf "%s,%f\n", $1, $2 }' > stats_language.csv
+
+# csv -> markdown
+fns="./stats_*.csv"
+for CSV_FILE in $fns
+do
+    echo $CSV_FILE
+    # Extract the base name of the CSV file without the extension
+    BASENAME=$(basename "$CSV_FILE" .csv)
+    echo $BASENAME
+    # Generate the corresponding Markdown file name
+    MARKDOWN_FILE="$BASENAME.md"
+    echo $MARKDOWN_FILE
+
+    # Create or overwrite the Markdown file
+    echo -e "| Language | Execution Time (s) |" > "$MARKDOWN_FILE"
+    echo -e "|-----------|---------------------|" >> "$MARKDOWN_FILE"
+
+    # Read the CSV file and format as Markdown table
+    while IFS=, read -r LANGUAGE EXECTIME; do
+        echo -e "| $LANGUAGE | $EXECTIME |" >> "$MARKDOWN_FILE"
+    done < "$CSV_FILE"
+
+    echo "Markdown table has been created: $MARKDOWN_FILE"
+done
+
