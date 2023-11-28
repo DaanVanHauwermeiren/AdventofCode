@@ -30,6 +30,45 @@ Join our [Private leaderboard](https://adventofcode.com/2021/leaderboard/private
 
 ## summary stats
 
-<!-- START HANDLE FOR stats_user.md -->
-...
-<!-- END HANDLE FOR stats_user.md -->
+<!-- START_PLACEHOLDER_FOR_stats_user.md -->
+| Language | Execution Time (s) |
+|-----------|---------------------|
+| AAA | 0.139000 |
+| DVH | 4.211790 |
+<!-- END_PLACEHOLDER_FOR_stats_user.md -->
+
+
+<!-- START_PLACEHOLDER_FOR_stats_year.md -->
+| Language | Execution Time (s) |
+|-----------|---------------------|
+| 2021 | 0.426333 |
+| 2022 | 4.640240 |
+<!-- END_PLACEHOLDER_FOR_stats_year.md -->
+
+<!-- START_PLACEHOLDER_FOR_stats_language.md -->
+| Language | Execution Time (s) |
+|-----------|---------------------|
+| julia | 6.644250 |
+| python | 0.054000 |
+<!-- END_PLACEHOLDER_FOR_stats_language.md -->
+
+<!-- START_PLACEHOLDER_FOR_stats_year_day.md -->
+| Language | Execution Time (s) |
+|-----------|---------------------|
+| 2022-6 | 0.285000 |
+| 2022-7 | 0.015000 |
+| 2022-8 | 2.317000 |
+| 2022-9 | 2.929000 |
+| 2021-1 | 0.426333 |
+| 2022-10 | 1.666000 |
+| 2022-20 | 1.143000 |
+| 2022-11 | 1.542000 |
+| 2022-12 | 1.205000 |
+| 2022-13 | 0.057000 |
+| 2022-1 | 0.353500 |
+| 2022-23 | 63.722000 |
+| 2022-2 | 0.013000 |
+| 2022-3 | 0.021000 |
+| 2022-4 | 0.511500 |
+| 2022-5 | 2.239000 |
+<!-- END_PLACEHOLDER_FOR_stats_year_day.md -->

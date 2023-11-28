@@ -141,3 +141,30 @@ do
     echo "Markdown table has been created: $MARKDOWN_FILE"
 done
 
+
+# update README.md
+fns="./stats_*.md"
+for INCLUDE_FILE in $fns
+do
+    # Define the start and end placeholders
+    START_PLACEHOLDER="<!-- START_PLACEHOLDER_FOR_$(basename "$INCLUDE_FILE") -->"
+    END_PLACEHOLDER="<!-- END_PLACEHOLDER_FOR_$(basename "$INCLUDE_FILE") -->"
+    # Use awk to replace the content between the placeholders
+    awk -v start="$START_PLACEHOLDER" -v end="$END_PLACEHOLDER" '{
+    if (in_section) {
+        if ($0 ~ end) {
+        print
+        in_section = 0
+        }
+    } else if ($0 ~ start) {
+        print
+        system("cat '"'"$INCLUDE_FILE"'"'")
+        in_section = 1
+    } else {
+        print
+    }
+    }' "README.md" > "README.md.tmp"
+
+    # Rename the temporary file to overwrite README.md
+    mv "README.md.tmp" "README.md"
+done
