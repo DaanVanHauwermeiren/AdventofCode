@@ -16,7 +16,7 @@ echo `which julia`
 fns="./code/*"
 echo $fns
 
-LOG_FILE="log.csv"
+LOG_FILE="output.csv"
 
 # Function to check if an entry already exists in the log file
 entry_exists() {
