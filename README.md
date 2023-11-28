@@ -30,6 +30,10 @@ Join our [Private leaderboard](https://adventofcode.com/2021/leaderboard/private
 
 ## summary stats
 
+Here be some summary statistics.
+
+### Average execution time per user
+
 <!-- START_PLACEHOLDER_FOR_stats_user.md -->
 | Language | Execution Time (s) |
 |-----------|---------------------|
@@ -37,6 +41,7 @@ Join our [Private leaderboard](https://adventofcode.com/2021/leaderboard/private
 | DVH | 4.211790 |
 <!-- END_PLACEHOLDER_FOR_stats_user.md -->
 
+### Average execution time per year
 
 <!-- START_PLACEHOLDER_FOR_stats_year.md -->
 | Language | Execution Time (s) |
@@ -45,12 +50,16 @@ Join our [Private leaderboard](https://adventofcode.com/2021/leaderboard/private
 | 2022 | 4.640240 |
 <!-- END_PLACEHOLDER_FOR_stats_year.md -->
 
+### Average execution time per language
+
 <!-- START_PLACEHOLDER_FOR_stats_language.md -->
 | Language | Execution Time (s) |
 |-----------|---------------------|
 | julia | 6.644250 |
 | python | 0.054000 |
 <!-- END_PLACEHOLDER_FOR_stats_language.md -->
+
+### Average execution time per year and day
 
 <!-- START_PLACEHOLDER_FOR_stats_year_day.md -->
 | Language | Execution Time (s) |
