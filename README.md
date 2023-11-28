@@ -27,3 +27,9 @@ Join our [Private leaderboard](https://adventofcode.com/2021/leaderboard/private
 - If you need specific libs, do not forget to add them to either `requirements.txt` or the `Project.toml`
 - The code assumes `Python` version `3.1.10`, and `Julia` version `1.9.3`. Since this is a code golf repo, normally any recent release should be fine.
 - unless otherwise specified, all scripts are assumed to be run from the top level folder.
+
+## summary stats
+
+<!-- START HANDLE FOR stats_user.md -->
+...
+<!-- END HANDLE FOR stats_user.md -->
