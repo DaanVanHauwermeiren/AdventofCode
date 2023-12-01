@@ -19,7 +19,6 @@ Join our [Private leaderboard](https://adventofcode.com/2021/leaderboard/private
 [Join the chat](https://matrix.to/#/#AoC-BW-UGent:gitter.im) 
 (If you have never used gitter: you can click on `Element` and select `use in browser`. You can sign up with your `github.com` account.)
 
-
 ## Contributing
 
 - You can contribute code for any programming language you want, however at the moment, the solution checker only works for `Python` and `Julia`. 
