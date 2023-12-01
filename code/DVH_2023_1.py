@@ -31,6 +31,18 @@ def main() -> list[int]:
     # connected, e.g. "eightwo", this only capture either one or the other.
     # Hence the weird ordering below, I first thought that I needed to reverse order it, but
     # that does not matter
+    # EDIT: actually, if you look a bit closer, there are only a couple of combinations
+    # possible:
+    # nineight
+    # fiveight
+    # threeight
+    # oneight
+    # sevenine
+    # eighthree
+    # eightwo
+    # it is just the first and last letter overlapping, so I could have just done:
+    # .replace("eight", "e8t")
+    # overengineered, but still works!
 
     lines: list[str] = (
         raw.replace("nine", "nine_9_nine")
