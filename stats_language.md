@@ -1,4 +1,4 @@
 | Language | Execution Time (s) |
 |-----------|---------------------|
-| julia | 7.029840 |
-| python | 0.053750 |
+| julia | 6.644250 |
+| python | 0.056167 |
