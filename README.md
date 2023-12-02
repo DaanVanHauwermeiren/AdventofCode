@@ -1,5 +1,17 @@
 # Advent of Code
 
+# Intro
+Greetings and salutations fellow coder!
+
+Join our [Private leaderboard](https://adventofcode.com/2023/leaderboard/private) !
+(join with code: `1059646-48d5074b`)
+
+This is the code repository for the greatest code event of the year: the [Advent of Code](https://adventofcode.com/). If you are a student, don't worry about this (or ask our help)!
+
+[Join the chat](https://matrix.to/#/#AoC-BW-UGent:gitter.im) 
+(If you have never used gitter: you can click on `Element` and select `use in browser`. You can sign up with your `github.com` account.)
+
+
 <div style="text-align: center;">
     <img src="./figs/AoC_screencap.png" alt="AoC" width="650" style="display: block; margin: 10 auto;">
     <img src="./figs/re50_ComfyUI_20281122__00102_.png" alt="AoC" width="650" style="display: block; margin: 10 auto;">
@@ -8,16 +20,6 @@
     <img src="./figs/re50_ComfyUI_20281122__00172_.png" alt="AoC" width="650" style="display: block; margin: 10 auto;">
 </div>
 
-# Intro
-Greetings and salutations fellow coder!
-
-This is the code repository for the greatest code event of the year: the [Advent of Code](https://adventofcode.com/).
-
-Join our [Private leaderboard](https://adventofcode.com/2021/leaderboard/private) !
-(join with code: `1059646-48d5074b`)
-
-[Join the chat](https://matrix.to/#/#AoC-BW-UGent:gitter.im) 
-(If you have never used gitter: you can click on `Element` and select `use in browser`. You can sign up with your `github.com` account.)
 
 
 ## Contributing
