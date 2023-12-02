@@ -1,4 +1,16 @@
-`# Advent of Code
+# Advent of Code
+
+# Intro
+Greetings and salutations fellow coder!
+
+Join our [Private leaderboard](https://adventofcode.com/2023/leaderboard/private) !
+(join with code: `1059646-48d5074b`)
+
+This is the code repository for the greatest code event of the year: the [Advent of Code](https://adventofcode.com/). If you are a student, don't worry about this (or ask our help)!
+
+[Join the chat](https://matrix.to/#/#AoC-BW-UGent:gitter.im) 
+(If you have never used gitter: you can click on `Element` and select `use in browser`. You can sign up with your `github.com` account.)
+
 
 <div style="text-align: center;">
     <img src="./figs/AoC_screencap.png" alt="AoC" width="650" style="display: block; margin: 10 auto;">
@@ -8,16 +20,6 @@
     <img src="./figs/re50_ComfyUI_20281122__00172_.png" alt="AoC" width="650" style="display: block; margin: 10 auto;">
 </div>
 
-# Intro
-Greetings and salutations fellow coder!
-
-This is the code repository for the greatest code event of the year: the [Advent of Code](https://adventofcode.com/).
-
-Join our [Private leaderboard](https://adventofcode.com/2021/leaderboard/private) !
-(join with code: `1059646-48d5074b`)
-
-[Join the chat](https://matrix.to/#/#AoC-BW-UGent:gitter.im) 
-(If you have never used gitter: you can click on `Element` and select `use in browser`. You can sign up with your `github.com` account.)
 
 
 ## Contributing
@@ -69,7 +71,8 @@ Here be some summary statistics.
 | Language | Execution Time (s) |
 |-----------|---------------------|
 | AAA | 0.139000 |
-| DVH | 3.815500 |
+| MS | 0.412600 |
+| DVH | 4.211790 |
 <!-- END_PLACEHOLDER_FOR_stats_user.md -->
 
 ### Average execution time per year
@@ -79,7 +82,7 @@ Here be some summary statistics.
 |-----------|---------------------|
 | 2021 | 0.426333 |
 | 2022 | 4.640240 |
-| 2023 | 0.050800 |
+| 2023 | 0.412600 |
 <!-- END_PLACEHOLDER_FOR_stats_year.md -->
 
 ### Average execution time per language
@@ -87,8 +90,8 @@ Here be some summary statistics.
 <!-- START_PLACEHOLDER_FOR_stats_language.md -->
 | Language | Execution Time (s) |
 |-----------|---------------------|
-| julia | 6.644250 |
-| python | 0.053360 |
+| julia | 6.164890 |
+| python | 0.054000 |
 <!-- END_PLACEHOLDER_FOR_stats_language.md -->
 
 ### Average execution time per year and day
@@ -96,9 +99,8 @@ Here be some summary statistics.
 <!-- START_PLACEHOLDER_FOR_stats_year_day.md -->
 | Language | Execution Time (s) |
 |-----------|---------------------|
-| 2023-1 | 0.073500 |
+| 2023-1 | 0.412600 |
 | 2022-6 | 0.285000 |
-| 2023-2 | 0.028100 |
 | 2022-7 | 0.015000 |
 | 2022-8 | 2.317000 |
 | 2022-9 | 2.929000 |
