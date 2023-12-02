@@ -39,7 +39,7 @@ Here be some summary statistics.
 | Language | Execution Time (s) |
 |-----------|---------------------|
 | AAA | 0.139000 |
-| DVH | 4.004880 |
+| DVH | 3.815500 |
 <!-- END_PLACEHOLDER_FOR_stats_user.md -->
 
 ### Average execution time per year
@@ -49,7 +49,7 @@ Here be some summary statistics.
 |-----------|---------------------|
 | 2021 | 0.426333 |
 | 2022 | 4.640240 |
-| 2023 | 0.073500 |
+| 2023 | 0.050800 |
 <!-- END_PLACEHOLDER_FOR_stats_year.md -->
 
 ### Average execution time per language
@@ -58,7 +58,7 @@ Here be some summary statistics.
 | Language | Execution Time (s) |
 |-----------|---------------------|
 | julia | 6.644250 |
-| python | 0.056167 |
+| python | 0.053360 |
 <!-- END_PLACEHOLDER_FOR_stats_language.md -->
 
 ### Average execution time per year and day
@@ -68,6 +68,7 @@ Here be some summary statistics.
 |-----------|---------------------|
 | 2023-1 | 0.073500 |
 | 2022-6 | 0.285000 |
+| 2023-2 | 0.028100 |
 | 2022-7 | 0.015000 |
 | 2022-8 | 2.317000 |
 | 2022-9 | 2.929000 |
