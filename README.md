@@ -29,6 +29,36 @@ Join our [Private leaderboard](https://adventofcode.com/2021/leaderboard/private
 - The code assumes `Python` version `3.1.10`, and `Julia` version `1.9.3`. Since this is a code golf repo, normally any recent release should be fine.
 - unless otherwise specified, all scripts are assumed to be run from the top level folder.
 
+Regarding formatting, please adhere to these standards (otherwise the solution check will not work):
+
+Python
+```python
+#!.venv/bin/python3
+def main() -> tuple[int|str, int|str]:
+    fn = sys.argv[1] # this is the path to the data file eg "data/input_2023_1.txt"
+    solution_1 = ...
+    solution_2 = ...
+    return solution_1, solution_2
+if __name__ == '__main__':
+    solutions = main()
+    print(solutions)
+```
+
+Julia
+```julia
+# If you are using non standard lib packages: make sure to license the Pkg output !
+using Pkg
+Pkg.activate(".", io=devnull)
+# using ...
+function main(args)
+    fn = args[1] # this is the path to the data file eg "data/input_2023_1.txt"
+    solution_1 = ...
+    solution_2 = ...
+    println(solution_1, ' ', solution_2)
+end
+main(ARGS)
+```
+
 ## summary stats
 
 Here be some summary statistics.
