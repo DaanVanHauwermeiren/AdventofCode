@@ -7,7 +7,7 @@ AoC: 2023 day 1
 import sys
 import re
 
-def main() -> list[int]:
+def main() -> tuple[int, int]:
     fn: str = sys.argv[1]
 
     with open(fn, mode="r") as f:
@@ -63,5 +63,5 @@ def main() -> list[int]:
 
 
 if __name__ == '__main__':
-    solutions: list[int] = main()
+    solutions = main()
     print(solutions)
