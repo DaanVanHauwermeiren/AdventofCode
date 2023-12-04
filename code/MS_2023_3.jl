@@ -5,7 +5,7 @@ Last update: -
 @author: Michiel Stock
 michielfmstock@gmail.com
 
-Day 3: machine schematics
+Day 3: machine schematics and gear grinding
 =#
 
 pint(string) = parse(Int, string)
