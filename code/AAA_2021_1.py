@@ -5,11 +5,10 @@ author: Daan Van Hauwermeiren
 AoC: day 1
 """
 import sys
-from typing import List
 
 import numpy as np
 
-def main() -> List[int]:
+def main() -> tuple[int, int]:
     fn = sys.argv[1]
 
     with open(fn, mode="r") as f:

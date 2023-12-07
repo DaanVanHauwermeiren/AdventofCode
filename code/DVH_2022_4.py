@@ -6,7 +6,6 @@ author: Daan Van Hauwermeiren
 AoC 2022 day 4
 """
 import sys
-from typing import List
 from dataclasses import dataclass, field
 
 @dataclass
