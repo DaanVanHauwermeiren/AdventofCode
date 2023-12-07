@@ -20,8 +20,7 @@ function main(args)
 
     window_3_sum(x::Vector) = [sum(x[i-2:i]) for i in 3:length(x)]
     solution_2 = get_n_positive(diff(window_3_sum(data))) 
-    # @show solution_1, solution_2
-    println(solution_1, ' ', solution_2)
+    @show solution_1, solution_2
 end
 main(ARGS)
 

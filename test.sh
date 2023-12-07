@@ -181,8 +181,8 @@ do
     echo $MARKDOWN_FILE
 
     # Create or overwrite the Markdown file
-    echo -e "| Language | Execution Time (s) |" > "$MARKDOWN_FILE"
-    echo -e "|-----------|---------------------|" >> "$MARKDOWN_FILE"
+    # echo -e "| Language | Execution Time (s) |" > "$MARKDOWN_FILE"
+    # echo -e "|-----------|---------------------|" >> "$MARKDOWN_FILE"
 
     # Read the CSV file and format as Markdown table
     while IFS=, read -r LANGUAGE EXECTIME; do

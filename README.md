@@ -55,7 +55,7 @@ function main(args)
     fn = args[1] # this is the path to the data file eg "data/input_2023_1.txt"
     solution_1 = ...
     solution_2 = ...
-    println(solution_1, ' ', solution_2)
+    @show solution_1, solution_2
 end
 main(ARGS)
 ```
@@ -66,45 +66,51 @@ Here be some summary statistics.
 
 ### Average execution time per user
 
-<!-- START_PLACEHOLDER_FOR_stats_user.md -->
-| Language | Execution Time (s) |
+| Person | Execution Time (s) |
 |-----------|---------------------|
+<!-- START_PLACEHOLDER_FOR_stats_user.md -->
 | AAA | 0.139000 |
-| MS | 0.412600 |
-| DVH | 4.211790 |
+| MS | 0.595800 |
+| DVH | 3.557720 |
 <!-- END_PLACEHOLDER_FOR_stats_user.md -->
 
 ### Average execution time per year
 
-<!-- START_PLACEHOLDER_FOR_stats_year.md -->
-| Language | Execution Time (s) |
+| Year | Execution Time (s) |
 |-----------|---------------------|
+<!-- START_PLACEHOLDER_FOR_stats_year.md -->
 | 2021 | 0.426333 |
-| 2022 | 4.640240 |
-| 2023 | 0.412600 |
+| 2022 | 4.641750 |
+| 2023 | 1.630840 |
 <!-- END_PLACEHOLDER_FOR_stats_year.md -->
 
 ### Average execution time per language
 
-<!-- START_PLACEHOLDER_FOR_stats_language.md -->
 | Language | Execution Time (s) |
 |-----------|---------------------|
-| julia | 6.164890 |
-| python | 0.054000 |
+<!-- START_PLACEHOLDER_FOR_stats_language.md -->
+| julia | 6.180960 |
+| python | 0.858860 |
 <!-- END_PLACEHOLDER_FOR_stats_language.md -->
 
 ### Average execution time per year and day
 
-<!-- START_PLACEHOLDER_FOR_stats_year_day.md -->
-| Language | Execution Time (s) |
+| Year-Day | Execution Time (s) |
 |-----------|---------------------|
-| 2023-1 | 0.412600 |
-| 2022-6 | 0.285000 |
+<!-- START_PLACEHOLDER_FOR_stats_year_day.md -->
+| 2023-1 | 0.334650 |
+| 2022-6 | 0.310700 |
+| 2023-2 | 0.029000 |
 | 2022-7 | 0.015000 |
+| 2023-3 | 0.252800 |
 | 2022-8 | 2.317000 |
+| 2023-4 | 0.021400 |
 | 2022-9 | 2.929000 |
 | 2021-1 | 0.426333 |
+| 2023-5 | 0.014800 |
+| 2023-6 | 12.008700 |
 | 2022-10 | 1.666000 |
+| 2023-7 | 0.050700 |
 | 2022-20 | 1.143000 |
 | 2022-11 | 1.542000 |
 | 2022-12 | 1.205000 |
