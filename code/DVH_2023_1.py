@@ -58,7 +58,42 @@ def main() -> tuple[int, int]:
 
     matches: list[list[str]] = [re.findall(pattern, ii) for ii in lines]
     solution_2: int = sum(int(n[0] + n[-1]) for n in matches)
+
+    import re
+
+    # solution adapted from hyper-neutrino:
+    # https://github.com/hyper-neutrino/advent-of-code/blob/main/2023/day01p2.py
+    n: list[str] = "one two three four five six seven eight nine".split()
+    # |.join(n): This joins all the elements in the list n into a single string, with each 
+    # element separated by the pipe character |. The pipe character in regex is used to 
+    # denote "OR", so this part of the pattern will match any string that is an element of n
+    # |\\d: This adds an OR condition to the pattern to also match any digit. The \\d in 
+    # regex stands for any digit from 0-9.
+    # (?=...): This is a positive lookahead assertion. This means the regex engine will test
+    #  that the assertion (everything inside the parentheses) is true, but won't actually 
+    # consume any characters. In other words, it checks that the pattern is there, but 
+    # doesn't include it in the match.
+    # So, the entire pattern "(?=(" + "|".join(n) + "|\\d))" will match any location in a 
+    # string that is immediately followed by a string from n or a digit, without including 
+    # the following string or digit in the match.
+    pattern = "(?=(" + "|".join(n) + "|\\d))"
+
+
+    def parse_match(match: str):
+        if match in n:
+            # adding 1 because python is zero-based
+            # conversion for e.g. `two` to `2`
+            return str(n.index(match) + 1)
+        return match
     
+    with open(fn, mode="r") as f:
+        raw: str = f.read().strip()
+
+    solution_2: int = 0
+    for line in raw:
+        digits = [*map(parse_match, re.findall(pattern, line))]
+        solution_2 += int(digits[0] + digits[-1])
+
     return solution_1, solution_2
 
 

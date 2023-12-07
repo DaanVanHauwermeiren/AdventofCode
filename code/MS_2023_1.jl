@@ -7,6 +7,8 @@ michielfmstock@gmail.com
 
 AoC day 1: Calibration!
 =#
+using Pkg
+Pkg.activate(".", io=devnull)
 
 pint(string) = parse(Int, string)
 
@@ -55,6 +57,6 @@ function main(args)
 
     solution2 = split(data, "\n") .|> rstrip .|> denumber .|> denumber .|> get_calibaration_value |> sum 
 
-    println(solution1, ' ', solution2)
+    @show solution1, solution2
 end
 main(ARGS)
