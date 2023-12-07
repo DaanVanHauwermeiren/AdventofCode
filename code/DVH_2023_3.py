@@ -4,50 +4,93 @@
 author: Daan Van Hauwermeiren
 AoC: 2023 day 3
 """
+from collections import defaultdict
+from math import prod
+import re
 import sys
+
+import numpy as np
 
 def main() -> tuple[int, int]:
     fn: str = sys.argv[1]
 
     with open(fn, mode="r") as f:
-        raw: list[str] = f.readlines()
+        raw: list[str] = f.read().split("\n")
 
-    solution_1 = 0
-    for line in raw:
-        part_1, part_2 = line.split(" | ")
-        # making two sets of numbers
-        winning_no = set([int(ii) for ii in part_1.split(": ")[1].split()])
-        your_no = set([int(ii) for ii in part_2.split()])
-        # set intersection
-        common_numbers: set[int] = your_no & winning_no
-        if len(common_numbers) > 0:
-        solution_1 += 2**(len(common_numbers)-1)
+    # get dimensions
+    width: int = len(raw[0].strip())
+    height: int = len(raw)
 
-    # dicts are ordered in python>3.7
-    no_winning_no: dict[int, int] = {}
-    for ii, line in enumerate(raw, start=1):
-        part_1, part_2 = line.split(" | ")
-        # making two sets of numbers
-        winning_no = set([int(ii) for ii in part_1.split(": ")[1].split()])
-        your_no = set([int(ii) for ii in part_2.split()])
-        # set intersection
-        common_numbers = your_no.intersection(winning_no)
-        no_winning_no[ii] = len(common_numbers)
+    # preallocate the symbols grid
+    issymbol = np.zeros((width, height), dtype=bool)
 
-    # dicts are ordered in python>3.7
-    # card numbers: number of cards you have
-    no_cards: dict[int, int] = {ii:1 for ii in range(1, len(raw)+1)}
-    # looping over the card collection starting from the first card
-    for card_no, N in no_cards.items():
-        # looping over the number of winning numbers for each card
-        # and updating the number of cards you have (the following cards)
-        for jj in range(1, no_winning_no[card_no]+1):
-            no_cards[card_no+jj] += N
-    solution_2: int = sum(no_cards.values())    
+    # building symbols grid
+    for ii, line in enumerate(raw):
+        for jj, cc in enumerate(line):
+            # match the symbols: not a number nor a dot
+            if cc not in "1234567890.":
+                issymbol[ii, jj] = True
+
+    l_numbers: list[int] = []
+    # now look in the rectangular neighborhood of each symbol
+    for ii, line in enumerate(raw):
+        # match all the numbers in the string
+        for matched in re.finditer(r'\d+', line):
+            start = matched.start()
+            end = matched.end()
+            # look in the neighborhood of each number
+            rowmin = max(0, ii-1)
+            rowmax = min(height, ii+2)
+            colmin = max(0, start-1)
+            colmax = min(width, end+1)
+            print(rowmin, rowmax, colmin, colmax)
+            print(issymbol[rowmin:rowmax, colmin:colmax])
+            if any(issymbol[rowmin:rowmax, colmin:colmax].flatten()):
+                l_numbers.append(int(matched.group()))
+
+    solution_1 = sum(l_numbers)
+
+    # preallocate the symbols grid
+    isstar = np.zeros((width, height), dtype=bool)
+
+    for ii, line in enumerate(raw):
+        for jj, cc in enumerate(line):
+            # match the symbols: not a number nor a dot
+            if cc == "*":
+                isstar[ii, jj] = True
+
+    counted_stars = defaultdict(list)
+
+    for ii, line in enumerate(raw):
+        # match all the numbers in the string
+        for matched in re.finditer(r'\d+', line):
+            start = matched.start()
+            end = matched.end()
+            # look in the neighborhood of each number
+            rowmin = max(0, ii-1)
+            rowmax = min(height, ii+2)
+            colmin = max(0, start-1)
+            colmax = min(width, end+1)
+            if any(isstar[rowmin:rowmax, colmin:colmax].flatten()):
+                print(rowmin, rowmax, colmin, colmax)
+                print(isstar[rowmin:rowmax, colmin:colmax])
+
+                indices = np.where(isstar[rowmin:rowmax, colmin:colmax])
+                # assuming just 1 match
+                ii_star = range(rowmin, rowmax)[indices[0][0]]
+                jj_star = range(colmin, colmax)[indices[1][0]]
+
+                counted_stars[(ii_star, jj_star)].append(int(matched.group()))
+
+
+    solution_2 = 0
+    for key, value in counted_stars.items():
+        if len(value) == 2:
+            solution_2 += prod(value)
     
     return solution_1, solution_2
 
 
 if __name__ == '__main__':
-    solutions: list[int] = main()
+    solutions: tuple[int, int] = main()
     print(solutions)
