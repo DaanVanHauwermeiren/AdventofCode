@@ -8,9 +8,14 @@ michielfmstock@gmail.com
 Day six: boat race
 =#
 
+using Pkg
+Pkg.activate(".", io=devnull)
+# using ...
+function main(args=["data/input_2023_6.txt"])
+
 pint(string) = parse(Int, string)
 
-data = read("data/input_2023_6.txt", String) |> rstrip
+data = read(args[1], String) |> rstrip
 
 lines = split(data, "\n")
 
@@ -33,3 +38,9 @@ end
 solution1 = button_times.(times, distances) |> prod
 
 solution2 = button_times(time, distance)
+
+@show solution1, solution2
+return solution1,solution2
+end
+
+main(ARGS)

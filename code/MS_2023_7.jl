@@ -7,12 +7,18 @@ michielfmstock@gmail.com
 
 Day 7: Playing poker
 =#
+using Pkg
+Pkg.activate(".", io=devnull)
+# using ...
+
 
 using StatsBase: countmap 
 
+const CARDVALUES = Dict(c=>v for (v, c) in enumerate(reverse("AKQJT987654321")))
+
 pint(string) = parse(Int, string)
 
-const CARDVALUES = Dict(c=>v for (v, c) in enumerate(reverse("AKQJT987654321")))
+
 
 struct Hand
     cards::NTuple{5,Char}
@@ -60,7 +66,9 @@ KK677 28
 KTJJT 220
 QQQJA 483")
 
-data = data = read("data/input_2023_7.txt", String) |> rstrip
+function main(args=["data/input_2023_7.txt"])
+
+data = data = read(args[1], String) |> rstrip
 
 lines = split.(split(data, "\n"), Ref(" "))
 
@@ -98,3 +106,11 @@ end
 sort!(hands)
 
 solution2 = sum(prod,enumerate(bet.(hands)))
+
+@show solution1, solution2
+
+return solution1, solution2
+
+end
+
+main(ARGS)

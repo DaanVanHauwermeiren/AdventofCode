@@ -8,6 +8,8 @@ michielfmstock@gmail.com
 AoC day 1: Calibration!
 =#
 
+
+
 pint(string) = parse(Int, string)
 
 example = """
@@ -22,34 +24,46 @@ function get_calibaration_value(line)
     return 10f + l
 end
 
+using Pkg
+Pkg.activate(".", io=devnull)
+# using ...
+function main(args=["data/input_2023_1.txt"])
 
-data = read("data/input_2023_1.txt", String) |> rstrip
 
-solution1 = split(data, "\n") .|> rstrip .|> get_calibaration_value |> sum 
+    data = read(args[1], String) |> rstrip
+
+    solution1 = split(data, "\n") .|> rstrip .|> get_calibaration_value |> sum 
 
 
-denumber!(line) =  replace(line, 
-"one"=>1,
-"two"=>2,
-"three"=>3,
-"four"=>4,
-"five"=>5,
-"six"=>6,
-"seven"=>7,
-"eight"=>8,
-"nine"=>9,
-)
+    denumber!(line) =  replace(line, 
+    "one"=>1,
+    "two"=>2,
+    "three"=>3,
+    "four"=>4,
+    "five"=>5,
+    "six"=>6,
+    "seven"=>7,
+    "eight"=>8,
+    "nine"=>9,
+    )
 
-denumber(line) =  replace(line, 
-"one"=>"o1e",
-"two"=>"t2o",
-"three"=>"t3e",
-"four"=>"f4fr",
-"five"=>"f5e",
-"six"=>"s6x",
-"seven"=>"s7n",
-"eight"=>"e8t",
-"nine"=>"n9e",
-)
+    denumber(line) =  replace(line, 
+    "one"=>"o1e",
+    "two"=>"t2o",
+    "three"=>"t3e",
+    "four"=>"f4fr",
+    "five"=>"f5e",
+    "six"=>"s6x",
+    "seven"=>"s7n",
+    "eight"=>"e8t",
+    "nine"=>"n9e",
+    )
 
-solution2 = split(data, "\n") .|> rstrip .|> denumber .|> denumber .|> get_calibaration_value |> sum 
+    solution2 = split(data, "\n") .|> rstrip .|> denumber .|> denumber .|> get_calibaration_value |> sum 
+
+    @show solution1, solution2
+
+    return solution1, solution2
+end
+
+main(ARGS)

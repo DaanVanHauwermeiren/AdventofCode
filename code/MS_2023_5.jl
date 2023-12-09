@@ -8,6 +8,11 @@ michielfmstock@gmail.com
 Day 5: Gardening
 =#
 
+using Pkg
+Pkg.activate(".", io=devnull)
+using ProgressBars
+function main(args=["data/input_2023_5.txt"])
+
 pint(string) = parse(Int, string)
 
 data = "seeds: 79 14 55 13
@@ -44,7 +49,7 @@ humidity-to-location map:
 60 56 37
 56 93 4"
 
-data = read("data/input_2023_5.txt", String) |> rstrip
+data = read(args[1], String) |> rstrip
 
 parts = split(data, "\n\n")
 
@@ -75,7 +80,7 @@ map_source.([79,14,55,13], Ref(maps))
 
 @show solution1 = minimum(seed->seed2soil(seed, metamaps), seeds)
 
-using ProgressBars
+
 
 
 function find_sol2(seeds, metamaps)
@@ -90,3 +95,9 @@ function find_sol2(seeds, metamaps)
 end
     
 solution2 = find_sol2(seeds, metamaps)
+@show solution1, solution2
+
+return solution1, solution2
+end
+
+main(ARGS)

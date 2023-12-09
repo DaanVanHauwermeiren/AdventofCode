@@ -7,6 +7,10 @@ michielfmstock@gmail.com
 
 Day 8: navigating 
 =#
+using Pkg
+Pkg.activate(".", io=devnull)
+# using ...
+
 
 using Base.Iterators: cycle
 
@@ -20,7 +24,9 @@ EEE = (EEE, EEE)
 GGG = (GGG, GGG)
 ZZZ = (ZZZ, ZZZ)"
 
-data = read("data/input_2023_8.txt", String) |> rstrip
+function main(args=["data/input_2023_8.txt"])
+
+data = read(args[1], String) |> rstrip
 
 function parse_input(data)
     direction, splits = split(data, "\n\n")
@@ -60,3 +66,10 @@ end
 
 solution2 = lcm([find_way(directions, splits, start, pos->last(pos)=='Z') for start in A_ending_nodes]...)
         
+@show solution1, solution2
+
+return solution1, solution2
+
+end
+
+main(ARGS)
